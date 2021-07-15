@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "utils.hpp"
 #include "snake_game.hpp"
+#include "neural_network.hpp"
 
 class App {
 public:
@@ -20,6 +21,7 @@ public:
     std::string title;
     
     SnakeGame s_game;
+    NeuralNetwork* brain;
     
     App(){}
     App(int w_width, int w_height, std::string title);

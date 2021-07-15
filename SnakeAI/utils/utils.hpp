@@ -11,7 +11,9 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <math.h>
 #include <SFML/Graphics.hpp>
+#include "matrix.hpp"
 #include "constants.h"
 
 struct Cell
@@ -22,5 +24,8 @@ struct Cell
     Cell(int x, int y){this->x = x;this->y = y;}
     Cell(){}
 };
+
+double rand_float(double M, double N);
+sf::Color HSVtoRGB(float H, float S, float V);
 
 #endif /* utils_hpp */

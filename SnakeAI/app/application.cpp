@@ -17,6 +17,8 @@ App::App(int w_width, int w_height, std::string title){
 void App::Init(int fps){
     this->window = new sf::RenderWindow(sf::VideoMode(this->width, this->height), this->title);
     this->window->setFramerateLimit(fps);
+    
+    this->brain = new NeuralNetwork(9,5,5,3);
 }
 
 void App::Run(){
@@ -26,6 +28,7 @@ void App::Run(){
         this->Events();
         window->clear();
         s_game.Run(*window);
+        brain->draw(*window, 10, 10, 130);
         window->display();
     }
 }

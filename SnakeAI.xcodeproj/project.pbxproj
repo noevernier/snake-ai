@@ -13,6 +13,8 @@
 		DC1D063A26A099E20099500C /* snake_game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1D063826A099E20099500C /* snake_game.cpp */; };
 		DC1D064026A099FE0099500C /* snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1D063E26A099FE0099500C /* snake.cpp */; };
 		DC1D064326A09A070099500C /* food.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC1D064126A09A070099500C /* food.cpp */; };
+		DC6E96DA26A0E80100CC805C /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E96D826A0E80100CC805C /* matrix.cpp */; };
+		DC6E96DE26A0E9F200CC805C /* neural_network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DC6E96DC26A0E9F200CC805C /* neural_network.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		DC1D063F26A099FE0099500C /* snake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = snake.hpp; sourceTree = "<group>"; };
 		DC1D064126A09A070099500C /* food.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = food.cpp; sourceTree = "<group>"; };
 		DC1D064226A09A070099500C /* food.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = food.hpp; sourceTree = "<group>"; };
+		DC6E96D826A0E80100CC805C /* matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		DC6E96D926A0E80100CC805C /* matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
+		DC6E96DC26A0E9F200CC805C /* neural_network.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = neural_network.cpp; sourceTree = "<group>"; };
+		DC6E96DD26A0E9F200CC805C /* neural_network.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = neural_network.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,8 @@
 		DC1D061826A091E10099500C /* SnakeAI */ = {
 			isa = PBXGroup;
 			children = (
+				DC6E96DB26A0E9DA00CC805C /* neural_network */,
+				DC6E96D726A0E7F100CC805C /* matrix */,
 				DC1D063726A099340099500C /* snake_game */,
 				DC1D062F26A0941C0099500C /* app */,
 				DC1D062E26A094140099500C /* utils */,
@@ -115,6 +123,24 @@
 				DC1D064226A09A070099500C /* food.hpp */,
 			);
 			path = food;
+			sourceTree = "<group>";
+		};
+		DC6E96D726A0E7F100CC805C /* matrix */ = {
+			isa = PBXGroup;
+			children = (
+				DC6E96D826A0E80100CC805C /* matrix.cpp */,
+				DC6E96D926A0E80100CC805C /* matrix.hpp */,
+			);
+			path = matrix;
+			sourceTree = "<group>";
+		};
+		DC6E96DB26A0E9DA00CC805C /* neural_network */ = {
+			isa = PBXGroup;
+			children = (
+				DC6E96DC26A0E9F200CC805C /* neural_network.cpp */,
+				DC6E96DD26A0E9F200CC805C /* neural_network.hpp */,
+			);
+			path = neural_network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +235,8 @@
 				DC1D064026A099FE0099500C /* snake.cpp in Sources */,
 				DC1D061F26A091E10099500C /* main.cpp in Sources */,
 				DC1D063226A0943E0099500C /* utils.cpp in Sources */,
+				DC6E96DE26A0E9F200CC805C /* neural_network.cpp in Sources */,
+				DC6E96DA26A0E80100CC805C /* matrix.cpp in Sources */,
 				DC1D063A26A099E20099500C /* snake_game.cpp in Sources */,
 				DC1D063626A094F00099500C /* application.cpp in Sources */,
 				DC1D064326A09A070099500C /* food.cpp in Sources */,
