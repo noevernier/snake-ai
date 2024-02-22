@@ -10,7 +10,7 @@
 #define food_hpp
 
 #include <stdio.h>
-#include "utils.hpp"
+#include "utils/utils.hpp"
 
 class Food{
 public:

@@ -6,7 +6,7 @@
 //  Copyright © 2021 Noé. All rights reserved.
 //
 
-#include "utils.hpp"
+#include "utils/utils.hpp"
 
 double rand_float(double M, double N)
 {

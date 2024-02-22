@@ -10,7 +10,7 @@
 #define neural_network_hpp
 
 #include <stdio.h>
-#include "matrix.hpp"
+#include "matrix/matrix.hpp"
 #include <vector>
 
 class NeuralNetwork{

@@ -6,7 +6,7 @@
 //  Copyright © 2021 Noé. All rights reserved.
 //
 
-#include "food.hpp"
+#include "snake_game/food/food.hpp"
 
 Food::Food(){
     this->x = rand()%(window_width/size);

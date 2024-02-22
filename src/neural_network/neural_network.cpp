@@ -6,7 +6,7 @@
 //  Copyright © 2021 Noé. All rights reserved.
 //
 
-#include "neural_network.hpp"
+#include "neural_network/neural_network.hpp"
 
 NeuralNetwork::NeuralNetwork(int n_inputs,int n_hiddens, int  n_layers, int n_outputs){
     this->n_inputs = n_inputs;

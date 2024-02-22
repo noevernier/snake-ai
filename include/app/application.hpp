@@ -10,9 +10,9 @@
 #define application_hpp
 
 #include <stdio.h>
-#include "utils.hpp"
-#include "snake_game.hpp"
-#include "neural_network.hpp"
+#include "utils/utils.hpp"
+#include "snake_game/snake_game.hpp"
+#include "neural_network/neural_network.hpp"
 
 class App {
 public:

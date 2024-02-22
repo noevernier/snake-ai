@@ -13,8 +13,8 @@
 #include <iostream>
 #include <math.h>
 #include <SFML/Graphics.hpp>
-#include "matrix.hpp"
-#include "constants.h"
+#include "matrix/matrix.hpp"
+#include "utils/constants.h"
 
 struct Cell
 {

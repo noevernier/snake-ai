@@ -6,7 +6,7 @@
 //  Copyright © 2021 Noé. All rights reserved.
 //
 
-#include "application.hpp"
+#include "app/application.hpp"
 
 App::App(int w_width, int w_height, std::string title){
     this->width = w_width;

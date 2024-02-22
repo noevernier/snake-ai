@@ -10,7 +10,7 @@
 #define snake_game_hpp
 
 #include <stdio.h>
-#include "snake/snake.hpp"
+#include "snake_game/snake/snake.hpp"
 class SnakeGame{
 public:
     

@@ -10,7 +10,7 @@
 #define snake_hpp
 
 #include <stdio.h>
-#include "food.hpp"
+#include "snake_game/food/food.hpp"
 
 
 class Snake{

@@ -6,7 +6,7 @@
 //  Copyright © 2021 Noé. All rights reserved.
 //
 #include <stdexcept>
-#include "matrix.hpp"
+#include "matrix/matrix.hpp"
 #define EPS 1e-10
 
 using std::ostream;  using std::istream;  using std::endl;

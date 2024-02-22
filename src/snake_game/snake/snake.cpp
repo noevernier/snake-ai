@@ -6,7 +6,7 @@
 //  Copyright © 2021 Noé. All rights reserved.
 //
 
-#include "snake.hpp"
+#include "snake_game/snake/snake.hpp"
 
 Snake::Snake(){
     this->head.x = window_width/(size*2);

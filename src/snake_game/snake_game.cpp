@@ -6,7 +6,7 @@
 //  Copyright © 2021 Noé. All rights reserved.
 //
 
-#include "snake_game.hpp"
+#include "snake_game/snake_game.hpp"
 
 SnakeGame::SnakeGame(){
     
