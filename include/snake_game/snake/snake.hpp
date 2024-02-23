@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "snake_game/food/food.hpp"
+#include "neural_network/neural_network.hpp"
 
 
 class Snake{
@@ -33,11 +34,19 @@ public:
     void moveTo(Direction d);
     Direction getDirection() const;
     bool isDead() const;
+    void think();
 private:
     bool checkFood();
     bool checkCollide();
+
+    std::array<int, 2> getDistanceToApple();
+    std::array<int, 4> getDistanceToWall();
+    std::array<int, 4> getDistanceToTail();
     
     void move();
+
+    // brain
+    NeuralNetwork brain;
 };
 
 #endif /* snake_hpp */

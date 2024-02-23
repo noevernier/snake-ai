@@ -5,7 +5,10 @@ int main()
 {
     App app(window_width, window_height, "Snake AI");
 
-    app.Init(15);
+    //change the seed to get different results
+    srand(12237);
+
+    app.Init(10);
     app.Run();
     return 0;
 }

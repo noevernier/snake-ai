@@ -41,9 +41,13 @@ public:
     static Matrix createIdentity(int);
     static Matrix solve(Matrix, Matrix);
     static Matrix bandSolve(Matrix, Matrix, int);
+    static Matrix fromArray(std::vector<float>);
     
     // functions on vectors
     static double dotProduct(Matrix, Matrix);
+
+    // map a function to every element of the matrix
+    void map(double (*f)(double));
     
     // functions on augmented matrices
     static Matrix augment(Matrix, Matrix);

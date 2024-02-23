@@ -253,6 +253,15 @@ Matrix Matrix::bandSolve(Matrix A, Matrix b, int k)
     return x;
 }
 
+Matrix Matrix::fromArray(std::vector<float> arr)
+{
+    Matrix temp(arr.size(), 1);
+    for (int i = 0; i < arr.size(); ++i) {
+        temp.p[i][0] = arr[i];
+    }
+    return temp;
+}
+
 // functions on VECTORS
 double Matrix::dotProduct(Matrix a, Matrix b)
 {
@@ -554,6 +563,14 @@ void Matrix::randomize(){
     for (int i = 0; i < rows_; ++i) {
         for (int j = 0; j < cols_; ++j) {
             p[i][j] = rand_float(-1, 1);
+        }
+    }
+}
+
+void Matrix::map(double (*f)(double)){
+    for (int i = 0; i < rows_; ++i) {
+        for (int j = 0; j < cols_; ++j) {
+            p[i][j] = f(p[i][j]);
         }
     }
 }

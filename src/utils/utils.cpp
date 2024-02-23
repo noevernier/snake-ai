@@ -42,3 +42,7 @@ sf::Color HSVtoRGB(float H, float S, float V)
     
     return sf::Color((r + m) * 255, (g + m) * 255, (b + m) * 255, 255);
 }
+
+double sigmoid(double x){
+    return 1/(1+exp(-x));
+}

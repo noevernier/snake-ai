@@ -14,10 +14,13 @@ Snake::Snake(){
     this->body.push_back(Cell(this->head.x, this->head.y-1));
     this->dead = false;
     this->score = 0;
+    this->brain = NeuralNetwork(10, 10, 3, 4);
 }
 
 void Snake::update(){
     if(!this->dead){
+
+        this->think();
         
         for(int i = this->body.size()-1; i > 0; i--){
             this->body[i] = this->body[i-1];
@@ -34,6 +37,7 @@ void Snake::update(){
         if(checkCollide()){
             this->dead = true;
         }
+
         life_time++;
     }
 }
@@ -70,6 +74,9 @@ void Snake::draw(sf::RenderWindow &window){
         bo.setPosition(b.x*size, b.y*size);
         window.draw(bo);
     }
+
+    // draw brain
+    this->brain.draw(window, 0, 0, 100);
     
 }
 
@@ -105,3 +112,105 @@ Direction Snake::getDirection() const{
 bool Snake::isDead() const{
     return this->dead;
 }
+
+void Snake::think(){
+    auto distances_to_apple = getDistanceToApple();
+    auto distances_to_wall = getDistanceToWall();
+    auto distances_to_tail = getDistanceToTail();
+
+    std::vector<float> inputs = {
+        static_cast<float>(distances_to_apple[0]) / (window_width/size),
+        static_cast<float>(distances_to_apple[1]) / (window_height/size),
+        static_cast<float>(distances_to_wall[0]) / (window_width/size),
+        static_cast<float>(distances_to_wall[1]) / (window_width/size),
+        static_cast<float>(distances_to_wall[2]) / (window_height/size),
+        static_cast<float>(distances_to_wall[3]) / (window_height/size),
+        static_cast<float>(distances_to_tail[0]) / (window_width/size),
+        static_cast<float>(distances_to_tail[1]) / (window_width/size),
+        static_cast<float>(distances_to_tail[2]) / (window_height/size),
+        static_cast<float>(distances_to_tail[3]) / (window_height/size)
+    };
+
+    std::cout << "inputs: ";
+    for(auto i: inputs){
+        std::cout << i << " ";
+    }
+
+    auto outputs = this->brain.feedForward(inputs);
+
+    std::cout << "outputs: ";
+    for(auto o: outputs){
+        std::cout << o << " ";
+    }
+
+    int max_index = 0;
+    for(int i = 0; i < outputs.size(); i++){
+        if(outputs[i] > outputs[max_index]){
+            max_index = i;
+        }
+    }
+
+    std::cout << "max_index: " << max_index << std::endl;
+
+    switch (max_index) {
+        case 0:
+            this->dir = UP;
+            break;
+        case 1:
+            this->dir = DOWN;
+            break;
+        case 2:
+            this->dir = LEFT;
+            break;
+        case 3:
+            this->dir = RIGHT;
+            break;
+    }
+
+
+}
+
+std::array<int, 2> Snake::getDistanceToApple(){
+    std::array<int, 2> distances;
+    distances[0] = this->head.x - this->apple.x;
+    distances[1] = this->head.y - this->apple.y;
+    return distances;
+}
+
+std::array<int, 4> Snake::getDistanceToWall(){
+    std::array<int, 4> distances;
+    distances[0] = (this->head.x);
+    distances[1] = (window_width/size - this->head.x);
+    distances[2] = (this->head.y);
+    distances[3] = (window_height/size - this->head.y);
+    return distances;
+}
+
+std::array<int, 4> Snake::getDistanceToTail(){
+    std::array<int, 4> distances;
+
+    distances[0] = -1;
+    distances[1] = -1;
+    distances[2] = -1;
+    distances[3] = -1;
+
+    for(auto cell: this->body){
+        if(cell.y == this->head.y){
+            if(cell.x < this->head.x){
+                distances[0] = this->head.x - cell.x;
+            }else{
+                distances[1] = cell.x - this->head.x;
+            }
+        }
+        if(cell.x == this->head.x){
+            if(cell.y > this->head.y){
+                distances[2] = cell.y - this->head.y;
+            }else{
+                distances[3] = this->head.y - cell.y;
+            }
+        }
+    }
+
+    return distances;
+}
+

@@ -31,6 +31,23 @@ NeuralNetwork::NeuralNetwork(int n_inputs,int n_hiddens, int  n_layers, int n_ou
     }
 }
 
+std::vector<float> NeuralNetwork::feedForward(std::vector<float> inputs){
+    Matrix input = Matrix::fromArray(inputs);
+    for (int i = 0; i < n_layers; i++) {
+        input = (weights[i] * input) + bias[i];
+        input.map(sigmoid);
+    }
+
+    input = (weights[weights.size()-1] * input) + bias[bias.size()-1];
+    input.map(sigmoid);
+
+    std::vector<float> result;
+    for (int i = 0; i < n_outputs; i++) {
+        result.push_back(input(i, 0));
+    }
+    return result;
+}
+
 void NeuralNetwork::draw(sf::RenderWindow &window, float x, float y, float s){
     
     float nodes_radius = s/(2*(n_inputs));

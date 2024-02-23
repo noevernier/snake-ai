@@ -23,6 +23,7 @@ public:
     NeuralNetwork(){}
     
     void draw(sf::RenderWindow& window, float x, float y, float s);
+    std::vector<float> feedForward(std::vector<float> inputs);
     
 };
 

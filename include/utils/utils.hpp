@@ -28,4 +28,6 @@ struct Cell
 double rand_float(double M, double N);
 sf::Color HSVtoRGB(float H, float S, float V);
 
+double sigmoid(double x);
+
 #endif /* utils_hpp */
