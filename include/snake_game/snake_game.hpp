@@ -18,8 +18,9 @@ public:
     
     SnakeGame();
     
-    void Run(sf::RenderWindow& window);
+    void run(sf::RenderWindow& window);
     void checkKey(sf::Event event);
+    void draw(sf::RenderWindow& window);
 };
 
 #endif /* snake_game_hpp */

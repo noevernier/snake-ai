@@ -13,6 +13,6 @@ enum Direction {UP, DOWN, RIGHT, LEFT};
 
 constexpr int window_height = 800;
 constexpr int window_width = 800;
-constexpr int size = 10;
+constexpr int size = 20;
 
 #endif /* constants_h */

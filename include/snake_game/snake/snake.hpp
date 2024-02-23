@@ -31,6 +31,8 @@ public:
     void draw(sf::RenderWindow& window);
     
     void moveTo(Direction d);
+    Direction getDirection() const;
+    bool isDead() const;
 private:
     bool checkFood();
     bool checkCollide();

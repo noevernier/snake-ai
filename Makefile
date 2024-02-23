@@ -31,7 +31,7 @@ DEPS := $(OBJS:.o=.d)
 # Run task
 run: build
 	@echo "🚀 Executing..."
-	./$(TARGET) $(ARGS)
+	@./$(TARGET) $(ARGS)
 
 # Build task
 build: clean all
@@ -42,19 +42,19 @@ all: $(TARGET)
 # Task producing target from built files
 $(TARGET): $(OBJS)
 	@echo "🚧 Building..."
-	mkdir -p $(dir $@)
-	$(CXX) $(OBJS) -o $@ $(LDPATHS) $(LDFLAGS)
+	@mkdir -p $(dir $@)
+	@$(CXX) $(OBJS) -o $@ $(LDPATHS) $(LDFLAGS) > /dev/null 2>&1
 
 # Compile all cpp files
 $(BUILD)/%.o: $(SRC)/%.cpp
-	mkdir -p $(dir $@)
-	$(CXX) $(CXX_FLAGS) $(PRE_FLAGS) $(INC_FLAGS) -c -o $@ $< $(LDPATHS) $(LDFLAGS)
-
+	@mkdir -p $(dir $@)
+	@$(CXX) $(CXX_FLAGS) $(PRE_FLAGS) $(INC_FLAGS) -c -o $@ $< > /dev/null 2>&1
+# $(CXX) $(CXX_FLAGS) $(PRE_FLAGS) $(INC_FLAGS) -c -o $@ $< $(LDPATHS) $(LDFLAGS)
 # Clean task
 .PHONY: clean
 clean:
 	@echo "🧹 Clearing..."
-	rm -rf build
+	@rm -rf build
 
 # Include all dependencies
 -include $(DEPS)

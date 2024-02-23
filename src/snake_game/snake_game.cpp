@@ -8,13 +8,12 @@
 
 #include "snake_game/snake_game.hpp"
 
-SnakeGame::SnakeGame(){
-    
-}
+SnakeGame::SnakeGame(){}
 
-void SnakeGame::Run(sf::RenderWindow& window){
+void SnakeGame::run(sf::RenderWindow& window){
     snake.update();
     snake.draw(window);
+    this->draw(window);
 }
 
 void SnakeGame::checkKey(sf::Event event){
@@ -22,17 +21,47 @@ void SnakeGame::checkKey(sf::Event event){
     {
         switch (event.key.code) {
             case sf::Keyboard::Up:
-                this->snake.moveTo(UP);
+                if (snake.getDirection() != DOWN)
+                    this->snake.moveTo(UP);
                 break;
             case sf::Keyboard::Down:
-                this->snake.moveTo(DOWN);
+                if (snake.getDirection() != UP)
+                    this->snake.moveTo(DOWN);
                 break;
             case sf::Keyboard::Left:
-                this->snake.moveTo(LEFT);
+                if (snake.getDirection() != RIGHT)
+                    this->snake.moveTo(LEFT);
                 break;
             case sf::Keyboard::Right:
-                this->snake.moveTo(RIGHT);
+                if (snake.getDirection() != LEFT)
+                    this->snake.moveTo(RIGHT);
+                break;
+            default:
                 break;
         }
+    }
+}
+
+void SnakeGame::draw(sf::RenderWindow& window){
+    // draw hud with score
+    sf::Font font;
+    font.loadFromFile("data/fonts/arcade.ttf");
+    sf::Text text;
+    text.setFont(font);
+    text.setString("Score  " + std::to_string(snake.score));
+    text.setCharacterSize(32);
+    text.setFillColor(sf::Color::White);
+    text.setPosition(10, 10);
+    window.draw(text);
+
+    // draw you lose
+    if(snake.isDead()){
+        sf::Text text;
+        text.setFont(font);
+        text.setString("You  lose");
+        text.setCharacterSize(100);
+        text.setFillColor(sf::Color::White);
+        text.setPosition(window_width/2-200, window_height/2-50);
+        window.draw(text);
     }
 }

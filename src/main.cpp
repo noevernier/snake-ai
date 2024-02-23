@@ -5,7 +5,7 @@ int main()
 {
     App app(window_width, window_height, "Snake AI");
 
-    app.Init(30);
+    app.Init(15);
     app.Run();
     return 0;
 }

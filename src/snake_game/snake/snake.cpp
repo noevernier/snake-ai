@@ -41,16 +41,16 @@ void Snake::update(){
 void Snake::move(){
     switch (this->dir) {
         case UP:
-            this->head.y--;
+            this->head.y = (window_height/size + this->head.y-1)%(window_height/size);
             break;
         case DOWN:
-            this->head.y++;
+            this->head.y = (this->head.y+1)%(window_height/size);
             break;
         case LEFT:
-            this->head.x--;
+            this->head.x = (window_width/size + this->head.x-1)%(window_width/size);
             break;
         case RIGHT:
-            this->head.x++;
+            this->head.x = (this->head.x+1)%(window_width/size);
             break;
     }
 }
@@ -81,9 +81,9 @@ bool Snake::checkFood(){
 }
 
 bool Snake::checkCollide(){
-    if(head.x < 0 || head.x > window_width/size || head.y < 0 || head.y > window_height/size){
-        return true;
-    }
+    // if(head.x < 0 || head.x > window_width/size || head.y < 0 || head.y > window_height/size){
+    //     return true;
+    // }
     
     for(auto& b : this->body){
         if(b.x == head.x && b.y == head.y){
@@ -96,4 +96,12 @@ bool Snake::checkCollide(){
 
 void Snake::moveTo(Direction d){
     this->dir = d;
+}
+
+Direction Snake::getDirection() const{
+    return this->dir;
+}
+
+bool Snake::isDead() const{
+    return this->dead;
 }

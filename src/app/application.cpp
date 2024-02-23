@@ -27,8 +27,8 @@ void App::Run(){
         // Process events
         this->Events();
         window->clear();
-        s_game.Run(*window);
-        brain->draw(*window, 10, 10, 130);
+        s_game.run(*window);
+        // brain->draw(*window, 10, 10, 130);
         window->display();
     }
 }
